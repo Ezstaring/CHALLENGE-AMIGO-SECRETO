@@ -1,3 +1,5 @@
+const { act } = require("react");
+
 //Array para almacenar los nombres de los amigos
 let amigos = [];
 
@@ -8,14 +10,8 @@ function agregarAmigo() {
 
 
     // Verificar si el nombre no está vacío
-    if (nombreAmigo !== '') {
-        // Agregar el nombre al array
-        amigos.push(nombreAmigo);
-        // Limpiar el campo de entrada
-        inputAmigo.value = '';
-        // Actualizar la lista de amigos
-        mostrarAmigos();
-    } else {
+    
+    if (nombreAmigo === '') {
         alert('Por favor, ingresa un nombre válido.');
         return; // Salir de la función si el nombre está vacío
     }
@@ -24,7 +20,18 @@ function agregarAmigo() {
         alert('El amigo ya está en la lista.');
         return; // Salir de la función si el amigo ya existe
     }
+
+    // Agregar el nombre al array de amigos
+    amigos.push(nombreAmigo);
+
+    // Limpiar el campo de entrada
+    inputAmigo.value = '';
+
+    // Actualizar la lista de HTML
+    actualizarListaAmigos();
 }
+
+// Función para 
 
 // Función para seleccionar un amigo al azar
 function seleccionarAmigo() {
