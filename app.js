@@ -4,7 +4,7 @@ let amigos = [];
 //Función para agregar un amigo
 function agregarAmigo() {
     const inputAmigo = document.getElementById('amigo');
-    const nombreAmigo = inputAmigo.vaule.trim();
+    const nombreAmigo = inputAmigo.value.trim(); // <-- Corregido "value"
 
 
     // Verificar si el nombre no está vacío
@@ -38,7 +38,7 @@ function actualizarLista() {
     amigos.forEach((amigo) => {
         const li = document.createElement('li');
         li.textContent = amigo;
-        lista.appendChild(li);
+        listaAmigos.appendChild(li); // <-- Corregido "listaAmigos"
     });
 }
 
