@@ -1,12 +1,10 @@
-const { act } = require("react");
-
 //Array para almacenar los nombres de los amigos
 let amigos = [];
 
 //Función para agregar un amigo
 function agregarAmigo() {
     const inputAmigo = document.getElementById('amigo');
-    const nombreAmigo = inputAmigo.ariaValueMax.trim();
+    const nombreAmigo = inputAmigo.vaule.trim();
 
 
     // Verificar si el nombre no está vacío
@@ -17,7 +15,7 @@ function agregarAmigo() {
     }
     // Verificar si el nombre ya existe
     if (amigos.includes(nombreAmigo)) {
-        alert('El amigo ya está en la lista.');
+        alert(`El amigo ${nombreAmigo} ya está en la lista.`);
         return; // Salir de la función si el amigo ya existe
     }
 
@@ -28,13 +26,13 @@ function agregarAmigo() {
     inputAmigo.value = '';
 
     // Actualizar la lista de HTML
-    actualizarListaAmigos();
+    actualizarLista();
 }
 
 // Función para actualizar la lista de amigos en la interfaz
-function actualizarListaAmigos() {
-    const lista = document.getElementById('lista-amigos');
-    lista.innerHTML = ''; // Limpiar la lista actual
+function actualizarLista() {
+    const listaAmigos = document.getElementById('listaAmigos');
+    listaAmigos.innerHTML = ''; // Limpiar la lista actual
 
     // Recorrer el array de amigos y agregar cada uno a la lista
     amigos.forEach((amigo) => {
@@ -45,12 +43,16 @@ function actualizarListaAmigos() {
 }
 
 // Función para seleccionar un amigo al azar
-function seleccionarAmigo() {
+function sortearAmigo() {
     if (amigos.length === 0) {
         alert('No hay amigos para seleccionar.');
         return; // Salir si no hay amigos
     }
+    // Generar un índice aleatorio y seleccionar un amigo
     const indiceAleatorio = Math.floor(Math.random() * amigos.length);
+    // Obtener el amigo seleccionado
     const amigoSeleccionado = amigos[indiceAleatorio];
-    alert(`Tu amigo secreto es: ${amigoSeleccionado}`);
+    // Mostrar el resultado en el HTML
+    const resultado = document.getElementById('resultado');
+    resultado.innerHTML = `El amigo seleccionado es: <strong>${amigoSeleccionado}</strong>`;
 }
